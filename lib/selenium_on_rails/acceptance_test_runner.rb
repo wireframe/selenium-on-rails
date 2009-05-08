@@ -46,11 +46,9 @@ module SeleniumOnRails
           has_error ||= result['numTestFailures'].to_i > 0
           # File.delete log_file unless has_error
         end
-      rescue
+      ensure
         stop_server
-        raise
       end
-      stop_server
       raise 'Test failures' if has_error
     end
     
